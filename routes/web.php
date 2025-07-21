@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\ProfileController;
-
+// GitHub test satırı
 Route::middleware(['auth'])->group(function () {
     Route::get('/', [TaskController::class, 'index']);
     Route::post('/tasks', [TaskController::class, 'store']);
