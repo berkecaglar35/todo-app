@@ -3,8 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\ProfileController;
-// GitHub test satırı
-Route::middleware(['auth'])->group(function () {
+use Illuminate\Support\Facades\Artisan;
+    
+    Route::middleware(['auth'])->group(function () {
     Route::get('/', [TaskController::class, 'index']);
     Route::post('/tasks', [TaskController::class, 'store']);
     Route::patch('/tasks/{task}/toggle', [TaskController::class, 'toggle']);
@@ -14,7 +15,10 @@ Route::middleware(['auth'])->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/tasks/export/pdf', [TaskController::class, 'exportPdf'])->name('tasks.export.pdf');
-
+    Route::get('/run-migrations', function () {
+    Artisan::call('migrate', ['--force' => true]);
+    return 'Migration çalıştırıldı!';
+});
     Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
