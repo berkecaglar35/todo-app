@@ -15,6 +15,12 @@ use Illuminate\Support\Facades\Artisan;
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/tasks/export/pdf', [TaskController::class, 'exportPdf'])->name('tasks.export.pdf');
+    
+    Route::get('/init-sessions', function () {
+    Artisan::call('session:table');
+    Artisan::call('migrate', ['--force' => true]);
+    return '✅ sessions tablosu oluşturuldu!';
+});
     Route::get('/run-session-migration', function () {
     Artisan::call('session:table');
     Artisan::call('migrate', ['--force' => true]);
