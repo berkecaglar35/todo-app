@@ -16,6 +16,10 @@ use Illuminate\Support\Facades\Artisan;
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/tasks/export/pdf', [TaskController::class, 'exportPdf'])->name('tasks.export.pdf');
     
+    Route::get('/init-auth', function () {
+    Artisan::call('migrate', ['--force' => true]);
+    return '✅ Auth tabloları migrate edildi!';
+});
     Route::get('/init-cache', function () {
     Artisan::call('cache:table');
     Artisan::call('migrate', ['--force' => true]);
