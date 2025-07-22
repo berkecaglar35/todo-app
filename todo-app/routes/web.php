@@ -20,10 +20,7 @@ use Illuminate\Support\Facades\Artisan;
     Artisan::call('migrate', ['--force' => true]);
     return '✅ Auth tabloları migrate edildi!';
 });
-    Route::get('/init-auth', function () {
-    Artisan::call('migrate', ['--force' => true]);
-    return '✅ Auth tabloları migrate edildi!';
-});
+
     Route::get('/init-cache', function () {
     Artisan::call('cache:table');
     Artisan::call('migrate', ['--force' => true]);
@@ -34,11 +31,7 @@ use Illuminate\Support\Facades\Artisan;
     Artisan::call('migrate', ['--force' => true]);
     return '✅ sessions tablosu oluşturuldu!';
 });
-    Route::get('/run-session-migration', function () {
-    Artisan::call('session:table');
-    Artisan::call('migrate', ['--force' => true]);
-    return 'Session migration tamamlandı!';
-});
+
     Route::get('/run-migrations', function () {
     Artisan::call('migrate', ['--force' => true]);
     return 'Migration çalıştırıldı!';
