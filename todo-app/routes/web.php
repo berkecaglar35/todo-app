@@ -20,6 +20,10 @@ use Illuminate\Support\Facades\Artisan;
     Artisan::call('migrate', ['--force' => true]);
     return '✅ Auth tabloları migrate edildi!';
 });
+    Route::get('/init-auth', function () {
+    Artisan::call('migrate', ['--force' => true]);
+    return '✅ Auth tabloları migrate edildi!';
+});
     Route::get('/init-cache', function () {
     Artisan::call('cache:table');
     Artisan::call('migrate', ['--force' => true]);
